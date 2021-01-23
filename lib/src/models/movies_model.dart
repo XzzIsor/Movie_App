@@ -8,7 +8,7 @@ class Movies {
 
     for (var item in jsonList) {
       final movie = new Movie.fromJsonMap(item);
-      movies.add(movie); 
+      movies.add(movie);
     }
   }
 }
@@ -61,5 +61,12 @@ class Movie {
     video = json['video'];
     voteAverage = json['vote_average'] / 1;
     voteCount = json['vote_count'];
+  }
+
+  String getPosterImage() {
+    return posterPath == null
+        ? "https://st.depositphotos.com/1730367/3477/i/600/depositphotos_34771537-stock-photo-dead-rat.jpg"
+        : 
+        'https://image.tmdb.org/t/p/w500/$posterPath';
   }
 }

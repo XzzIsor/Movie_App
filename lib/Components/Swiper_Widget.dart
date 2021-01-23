@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_swiper/flutter_swiper.dart';
 
+import '../src/models/movies_model.dart';
+
 class CustomSwiper extends StatelessWidget {
   CustomSwiper({@required this.items});
 
-  final List<dynamic> items;
+  final List<Movie> items;
 
   @override
   Widget build(BuildContext context) {
@@ -20,10 +22,11 @@ class CustomSwiper extends StatelessWidget {
         itemBuilder: (BuildContext context, int index) {
           return ClipRRect(
             borderRadius: BorderRadius.circular(40.0),
-            child: Image.network(
-              "http://via.placeholder.com/350x150",
-              fit: BoxFit.fill,
-            ),
+            child: FadeInImage(
+              image: NetworkImage(items[index].getPosterImage()),
+              placeholder: AssetImage('assets/img/loading.gif'),
+              fit: BoxFit.cover,  
+            )
           );
         },
         itemCount: items.length,
