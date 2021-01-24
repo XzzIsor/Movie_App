@@ -24,6 +24,7 @@ class HomePage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               _createSwiper(), 
+              
               _popularMovies(context)
             ],
           )),
@@ -45,8 +46,12 @@ class HomePage extends StatelessWidget {
     return Container(
       width: double.infinity,
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('Populares', style: Theme.of(context).textTheme.headline6,),
+          Container(
+            padding: EdgeInsets.only(left: 30),
+            child: Text('Populares', style: Theme.of(context).textTheme.headline6,)),
+          SizedBox(height: 10,),
           _getPopularMovies(),
         ],
       )
@@ -59,7 +64,7 @@ class HomePage extends StatelessWidget {
       builder: (BuildContext context, AsyncSnapshot snapshot) {
         return snapshot.hasData
             ? MovieHorizontal( movies: snapshot.data)
-            : Container(child: CircularProgressIndicator());
+            : Center(child: CircularProgressIndicator());
       },
     );
   }
