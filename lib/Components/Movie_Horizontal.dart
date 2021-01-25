@@ -1,45 +1,40 @@
 import 'package:flutter/material.dart';
+import 'package:movie_app/Components/CustomCard.dart';
 import '../src/models/movies_model.dart';
+
 
 class MovieHorizontal extends StatelessWidget {
   final List<Movie> movies;
-  MovieHorizontal({ @required this.movies});
+  final Function nextMovies;
+  MovieHorizontal({@required this.movies, @required this.nextMovies});
+
+  final PageController _pageController = PageController(
+    initialPage: 1,
+    viewportFraction: 0.3,
+  );
 
   @override
   Widget build(BuildContext context) {
     final _screenSize = MediaQuery.of(context).size;
 
+    _pageController.addListener(() {
+      if (_pageController.position.pixels >=
+          _pageController.position.maxScrollExtent - 200) {
+        nextMovies(); 
+      }
+    });
+
     return Container(
         height: _screenSize.height * 0.2,
-        child: PageView(
+        child: PageView.builder(
           pageSnapping: false,
-          controller: PageController(
-            initialPage: 1,
-            viewportFraction: 0.3,
-          ),
-          children: _cards(),
+          controller: _pageController,
+          itemCount: movies.length,
+          itemBuilder: (context, index){
+            return CustomCard(movies[index].getPosterImage(), movies[index].title);
+          },
         ));
   }
 
-  List<Widget> _cards() => movies.map((movie)=> Container(
-      margin: EdgeInsets.only(right: 15),
-      child: Column(
-        children: [
-          ClipRRect(
-              borderRadius: BorderRadius.circular(20),
-              child: FadeInImage(
-              placeholder: AssetImage("assets/img/no-image.jpg"), 
-              image: NetworkImage(movie.getPosterImage()),
-              fit: BoxFit.cover,
-              height: 120,
-            ),
-          ),
-         SizedBox(height: 10,),
-          Text(movie.title, overflow: TextOverflow.ellipsis,)
-        ],
-      ),
-    )
-    
-    ).toList();
-  }
-
+ 
+}
