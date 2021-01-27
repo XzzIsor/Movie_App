@@ -52,11 +52,11 @@ class Movie {
     genreIds = json['genre_ids'].cast<int>();
     id = json['id'];
     originalLanguage = json['original_language'];
-    originalTitle = json['original_title '];
-    overview = json['overview '];
+    originalTitle = json['original_title'];
+    overview = json['overview'];
     popularity = json['popularity'] / 1;
     posterPath = json['poster_path'];
-    releaseDate = json['release_date '];
+    releaseDate = json['release_date'];
     title = json['title'];
     video = json['video'];
     voteAverage = json['vote_average'] / 1;
@@ -69,4 +69,11 @@ class Movie {
         : 
         'https://image.tmdb.org/t/p/w500/$posterPath';
   }
+
+  String getBackGroundImage() {
+    return posterPath == null
+        ? "https://st.depositphotos.com/1730367/3477/i/600/depositphotos_34771537-stock-photo-dead-rat.jpg"
+        : 
+        'https://image.tmdb.org/t/p/w500/$backdropPath';
+  }  
 }
