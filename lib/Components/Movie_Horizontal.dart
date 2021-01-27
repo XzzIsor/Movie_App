@@ -31,10 +31,8 @@ class MovieHorizontal extends StatelessWidget {
           controller: _pageController,
           itemCount: movies.length,
           itemBuilder: (context, index){
-            return CustomCard(movies[index].getPosterImage(), movies[index].title);
+            return CustomCard(movies[index].getPosterImage(), movies[index].title,()=> Navigator.pushNamed(context, 'details', arguments: movies[index]));
           },
         ));
   }
-
- 
 }
