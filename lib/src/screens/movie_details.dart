@@ -18,13 +18,11 @@ class MovieDetails extends StatelessWidget {
             ]
           )
         )
-   
-       ],
+      ],
     ));
   }
 
   Widget _posterTitle(BuildContext context, Movie movie ){
-    
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 20),
       child: Row(
@@ -58,7 +56,7 @@ class MovieDetails extends StatelessWidget {
 
     
   }
-  
+
   Widget _description(Movie movie ){
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
@@ -76,13 +74,24 @@ class MovieDetails extends StatelessWidget {
       floating: false,
       pinned: true,
       flexibleSpace:FlexibleSpaceBar(
-        title: Text(movie.title), 
-        centerTitle: true, 
+        title: Row(children: [Spacer(), Text(movie.title, style: TextStyle(shadows: <Shadow>[
+      Shadow(
+        offset: Offset(10.0, 10.0),
+        blurRadius: 1,
+        color: Colors.black38,
+      ),
+      Shadow(
+        offset: Offset(10.0, 10.0),
+        blurRadius: 900,
+        color: Colors.black38,
+      ),
+    ],),)],), 
+        titlePadding: EdgeInsetsDirectional.only( end: 16, bottom: 16),
         background: FadeInImage(
           fit: BoxFit.cover,
           image: NetworkImage(movie.getBackGroundImage()),
           placeholder: AssetImage("assets/img/loading.gif"),
-          fadeInDuration: Duration(milliseconds: 150),
+          fadeInDuration: Duration(milliseconds: 500),
         ),
       )
     );       
