@@ -26,8 +26,7 @@ class HomePage extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              _createSwiper(), 
-              
+              _createSwiper(),
               _popularMovies(context)
             ],
           )),
