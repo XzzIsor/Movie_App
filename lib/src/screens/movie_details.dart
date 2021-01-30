@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movie_app/Components/Cast_horizontal.dart';
 import 'package:movie_app/src/models/movies_model.dart';
 
 class MovieDetails extends StatelessWidget {
@@ -15,6 +16,9 @@ class MovieDetails extends StatelessWidget {
               SizedBox(height: 20.0),
               _posterTitle(context, _movie),
               _description(_movie),
+              SizedBox(height: 20.0),
+            
+              CastHorizontal(movieId: _movie.id.toString()), 
             ]
           )
         )
@@ -64,7 +68,7 @@ class MovieDetails extends StatelessWidget {
     );
   }
 
-
+  
 
   Widget _createSliverAppBar(Movie movie) {
     return SliverAppBar(

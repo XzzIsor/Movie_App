@@ -1,16 +1,13 @@
 class Movies {
   List<Movie> movies = new List();
 
-  Movies();
-
   Movies.fromJsonList(List<dynamic> jsonList) {
     if (jsonList == null) return;
-
     for (var item in jsonList) {
       final movie = new Movie.fromJsonMap(item);
       movies.add(movie);
     }
-  }
+  } 
 }
 
 class Movie {
