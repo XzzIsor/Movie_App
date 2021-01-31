@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_swiper/flutter_swiper.dart';
+import 'package:movie_app/Components/CustomImage.dart';
 
 import '../src/models/movies_model.dart';
 
@@ -20,13 +21,16 @@ class CustomSwiper extends StatelessWidget {
         itemHeight: _screenSize.height * 0.5,
         itemWidth: _screenSize.width * 0.7,
         itemBuilder: (BuildContext context, int index) {
-          return ClipRRect(
-            borderRadius: BorderRadius.circular(40.0),
-            child: FadeInImage(
-              image: NetworkImage(items[index].getPosterImage()),
-              placeholder: AssetImage('assets/img/loading.gif'),
-              fit: BoxFit.cover,  
-            )
+          items[index].uniqueId = '${items[index].id}-poster';
+          return Hero(
+            tag: items[index].uniqueId,
+            child: GestureDetector(
+              onTap: () => Navigator.pushNamed(context, 'details',
+                  arguments: items[index]),
+              child: CustomImage(
+                items[index].getPosterImage(),
+              ),
+            ),
           );
         },
         itemCount: items.length,

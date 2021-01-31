@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 
+import 'package:movie_app/Components/CustomImage.dart';
+
 class CustomCard extends StatelessWidget {
   final String _image;
   final String _title;
   final Function _onTap;
+  final String tagHeroId;
 
-  CustomCard(this._image, this._title, this._onTap);
+  CustomCard(this._image, this._title, this._onTap, {this.tagHeroId});
 
   @override
   Widget build(BuildContext context) {
@@ -23,18 +26,11 @@ class CustomCard extends StatelessWidget {
                       blurRadius: 8,
                       offset: Offset(10, 10))
                 ]),
-            
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(20),
-                child: FadeInImage(
-                  placeholder: AssetImage("assets/img/no-image.jpg"),
-                  image: NetworkImage(_image),
-                  fit: BoxFit.cover,
-                  height: 120,
-                ),
-              ),
-            ),
-          SizedBox(height: 10,),
+            child: tagHeroId != null? Hero(tag: tagHeroId, child: CustomImage(_image)) : CustomImage(_image),
+          ),
+          SizedBox(
+            height: 10,
+          ),
           Text(
             _title,
             overflow: TextOverflow.ellipsis,
@@ -49,3 +45,5 @@ class CustomCard extends StatelessWidget {
     );
   }
 }
+
+
