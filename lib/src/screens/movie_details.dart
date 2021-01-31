@@ -31,14 +31,18 @@ class MovieDetails extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 20),
       child: Row(
         children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(20.0),
-            child: Image(
-              image: NetworkImage(movie.getPosterImage()),
-              height: 160.0,
-            )
+          Hero(
+            tag: movie.id,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(20.0),
+              child: Image(
+                image: NetworkImage(movie.getPosterImage()),
+                height: 160.0,
+              )
+            ),
           ),
           SizedBox(width: 20.0,),
+
           Flexible(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -78,18 +82,7 @@ class MovieDetails extends StatelessWidget {
       floating: false,
       pinned: true,
       flexibleSpace:FlexibleSpaceBar(
-        title: Row(children: [Spacer(), Text(movie.title, style: TextStyle(shadows: <Shadow>[
-      Shadow(
-        offset: Offset(10.0, 10.0),
-        blurRadius: 1,
-        color: Colors.black38,
-      ),
-      Shadow(
-        offset: Offset(10.0, 10.0),
-        blurRadius: 900,
-        color: Colors.black38,
-      ),
-    ],),)],), 
+        title:Text(movie.title), 
         titlePadding: EdgeInsetsDirectional.only( end: 16, bottom: 16),
         background: FadeInImage(
           fit: BoxFit.cover,

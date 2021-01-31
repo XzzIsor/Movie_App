@@ -7,7 +7,6 @@ class Cast {
       actors.add(actor);
     });
   }
-
 }
 
 class Actor {

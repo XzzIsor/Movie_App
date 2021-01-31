@@ -25,13 +25,20 @@ class MovieHorizontal extends StatelessWidget {
     });
 
     return Container(
-        height: _screenSize.height * 0.2,
+        height: _screenSize.height * 0.25,
         child: PageView.builder(
           pageSnapping: false,
           controller: _pageController,
           itemCount: movies.length,
           itemBuilder: (context, index){
-            return CustomCard(movies[index].getPosterImage(), movies[index].title,()=> Navigator.pushNamed(context, 'details', arguments: movies[index]));
+            return Hero(
+              tag: movies[index].id,
+              child:  CustomCard(
+                movies[index].getPosterImage(), 
+                movies[index].title,()=> Navigator.pushNamed(context, 'details', arguments: movies[index]),
+            )
+               
+            );
           },
         ));
   }
