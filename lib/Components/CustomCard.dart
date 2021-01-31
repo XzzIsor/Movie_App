@@ -10,21 +10,20 @@ class CustomCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Widget _card = Container(
-        
-        margin: EdgeInsets.only(right: 15),
-        child: Column(
-          children: [
-            Container(
-              decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20), 
-              boxShadow: [
-                BoxShadow(
-                  spreadRadius: 2,
-                  color: Colors.black.withOpacity(0.5), 
-                  blurRadius: 8, 
-                  offset: Offset(10,10) )
-              ]
-              ),
+      margin: EdgeInsets.only(right: 10),
+      child: Column(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                boxShadow: [
+                  BoxShadow(
+                      spreadRadius: 2,
+                      color: Colors.black.withOpacity(0.5),
+                      blurRadius: 8,
+                      offset: Offset(10, 10))
+                ]),
+            
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(20),
                 child: FadeInImage(
@@ -35,22 +34,18 @@ class CustomCard extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(
-              height: 10,
-            ),
-            Text(
-              _title,
-              overflow: TextOverflow.ellipsis,
-            )
-          ],
-        ),
-      );
-
+          SizedBox(height: 10,),
+          Text(
+            _title,
+            overflow: TextOverflow.ellipsis,
+          )
+        ],
+      ),
+    );
 
     return GestureDetector(
-      
-          child: _card,
-          onTap: _onTap,
-    ); 
+      child: _card,
+      onTap: _onTap,
+    );
   }
 }

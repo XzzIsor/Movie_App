@@ -24,10 +24,11 @@ class HomePage extends StatelessWidget {
       body: Container(
           color: Colors.deepPurple,
           child: Column(
+            mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               _createSwiper(),
-              _popularMovies(context)
+              _popularMovies(context),
             ],
           )),
     );
@@ -38,8 +39,9 @@ class HomePage extends StatelessWidget {
       future: movies.getInCines(),
       builder: (BuildContext context, AsyncSnapshot snapshot) {
         return snapshot.hasData
-            ? CustomSwiper(items: snapshot.data)
-            : Container(child: CircularProgressIndicator());
+            ? Container( child: CustomSwiper(items: snapshot.data))
+            : Center(
+              child: CircularProgressIndicator());
       },
     );
   }
@@ -53,7 +55,7 @@ class HomePage extends StatelessWidget {
           Container(
             padding: EdgeInsets.only(left: 30),
             child: Text('Populares', style: Theme.of(context).textTheme.headline6,)),
-          SizedBox(height: 10,),
+          SizedBox(height: 30,),
           _getPopularMovies(),
         ],
       )
@@ -67,7 +69,7 @@ class HomePage extends StatelessWidget {
       builder: (BuildContext context, AsyncSnapshot snapshot) {
         return snapshot.hasData
             ? MovieHorizontal( 
-             movies: snapshot.data, 
+             movies: snapshot.data,
              nextMovies: movies.getPopular
             )
             : Center(child: CircularProgressIndicator());

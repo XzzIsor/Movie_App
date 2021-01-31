@@ -14,7 +14,7 @@ class CustomSwiper extends StatelessWidget {
     final _screenSize = MediaQuery.of(context).size;
 
     return Container(
-      padding: EdgeInsets.only(top: 10),
+      padding: EdgeInsets.only(top: 0),
       width: double.infinity,
       child: Swiper(
         itemHeight: _screenSize.height * 0.5,
