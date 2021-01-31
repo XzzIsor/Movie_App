@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'package:movie_app/Components/Swiper_Widget.dart';
-
-import 'package:movie_app/Components/Movie_Horizontal.dart';
+import 'package:movie_app/Components/Sliders/Movie_Horizontal.dart';
+import 'package:movie_app/src/search/search_dalegate.dart';
 
 import '../providers/movies_provider.dart';
 
@@ -11,7 +11,6 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     movies.getPopular();
 
     return Scaffold(
@@ -19,7 +18,13 @@ class HomePage extends StatelessWidget {
         title: Text("Películas En Cartelera"),
         backgroundColor: Colors.black,
         centerTitle: false,
-        actions: [IconButton(icon: Icon(Icons.search), onPressed: () {})],
+        actions: [
+          IconButton(
+              icon: Icon(Icons.search),
+              onPressed: () {
+                showSearch(context: context, delegate: DataSearch(), query: "");
+              })
+        ],
       ),
       body: Container(
           color: Colors.deepPurple,
@@ -39,54 +44,41 @@ class HomePage extends StatelessWidget {
       future: movies.getInCines(),
       builder: (BuildContext context, AsyncSnapshot snapshot) {
         return snapshot.hasData
-            ? Container( child: CustomSwiper(items: snapshot.data))
-            : Center(
-              child: CircularProgressIndicator());
+            ? Container(child: CustomSwiper(items: snapshot.data))
+            : Center(child: CircularProgressIndicator());
       },
     );
   }
 
   Widget _popularMovies(BuildContext context) {
     return Container(
-      width: double.infinity,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            padding: EdgeInsets.only(left: 30),
-            child: Text('Populares', style: Theme.of(context).textTheme.headline6,)),
-          SizedBox(height: 30,),
-          _getPopularMovies(),
-        ],
-      )
-    );
+        width: double.infinity,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+                padding: EdgeInsets.only(left: 30),
+                child: Text(
+                  'Populares',
+                  style: Theme.of(context).textTheme.headline6,
+                )),
+            SizedBox(
+              height: 30,
+            ),
+            _getPopularMovies(),
+          ],
+        ));
   }
 
-  Widget _getPopularMovies(){
+  Widget _getPopularMovies() {
     return StreamBuilder(
       stream: movies.popularStream,
-      
       builder: (BuildContext context, AsyncSnapshot snapshot) {
         return snapshot.hasData
-            ? MovieHorizontal( 
-             movies: snapshot.data,
-             nextMovies: movies.getPopular
-            )
+            ? MovieHorizontal(
+                movies: snapshot.data, nextMovies: movies.getPopular)
             : Center(child: CircularProgressIndicator());
       },
     );
   }
-
 }
-
-
-
-
-
-
-
-
-
-
-
-

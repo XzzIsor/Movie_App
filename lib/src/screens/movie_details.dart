@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app/Components/Cast_horizontal.dart';
+import 'package:movie_app/Components/Sliders/Cast_horizontal.dart';
 import 'package:movie_app/src/models/movies_model.dart';
 
 class MovieDetails extends StatelessWidget {
@@ -14,7 +14,7 @@ class MovieDetails extends StatelessWidget {
           delegate: SliverChildListDelegate(
             [
               SizedBox(height: 20.0),
-              _posterTitle(context, _movie),
+              _posterTitleInfo(context, _movie),
               _description(_movie),
               SizedBox(height: 20.0),
             
@@ -26,13 +26,13 @@ class MovieDetails extends StatelessWidget {
     ));
   }
 
-  Widget _posterTitle(BuildContext context, Movie movie ){
+  Widget _posterTitleInfo(BuildContext context, Movie movie ){
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 20),
       child: Row(
         children: [
           Hero(
-            tag: movie.id,
+            tag: movie.uniqueId,
             child: ClipRRect(
               borderRadius: BorderRadius.circular(20.0),
               child: Image(
@@ -61,8 +61,6 @@ class MovieDetails extends StatelessWidget {
         ]
       ),
     );
-
-    
   }
 
   Widget _description(Movie movie ){
@@ -83,7 +81,7 @@ class MovieDetails extends StatelessWidget {
       pinned: true,
       flexibleSpace:FlexibleSpaceBar(
         title:Text(movie.title), 
-        titlePadding: EdgeInsetsDirectional.only( end: 16, bottom: 16),
+        titlePadding: EdgeInsetsDirectional.only(start: 16,  end: 16, bottom: 16),
         background: FadeInImage(
           fit: BoxFit.cover,
           image: NetworkImage(movie.getBackGroundImage()),
