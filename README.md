@@ -1,6 +1,6 @@
 # movie_app
 
-A new Flutter project.
+App to show movies on Billboard and their information
 
 ## Getting Started
 
