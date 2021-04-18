@@ -1,6 +1,6 @@
 # movie_app
 
-App to show movies on Billboard and their information
+App to show movies on Billboard and their information in real time
 
 ## Getting Started
 
