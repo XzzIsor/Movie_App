@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_swiper/flutter_swiper.dart';
-import 'package:movie_app/Components/CustomImage.dart';
+import 'package:movie_app/Widgets/CustomImage.dart';
 
 import '../src/models/movies_model.dart';
 

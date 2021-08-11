@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:movie_app/Components/CustomImage.dart';
+import 'package:movie_app/Widgets/CustomImage.dart';
 
 class CustomCard extends StatelessWidget {
   final String _image;

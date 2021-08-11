@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app/Components/Sliders/Cast_horizontal.dart';
+import 'package:movie_app/Widgets/Sliders/Cast_horizontal.dart';
 import 'package:movie_app/src/models/movies_model.dart';
 
 class MovieDetails extends StatelessWidget {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:movie_app/Components/Swiper_Widget.dart';
-import 'package:movie_app/Components/Sliders/Movie_Horizontal.dart';
+import 'package:movie_app/Widgets/Swiper_Widget.dart';
+import 'package:movie_app/Widgets/Sliders/Movie_Horizontal.dart';
 import 'package:movie_app/src/search/search_dalegate.dart';
 
 import '../providers/movies_provider.dart';

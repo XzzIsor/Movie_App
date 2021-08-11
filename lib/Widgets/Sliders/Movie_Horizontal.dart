@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app/Components/CustomCard.dart';
+import 'package:movie_app/Widgets/CustomCard.dart';
 import 'package:movie_app/src/models/movies_model.dart';
 
 
