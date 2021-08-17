@@ -8,7 +8,7 @@ class CastHorizontal extends StatelessWidget {
 
   final List<Actor> cast = [];
   final String movieId;
-  CastHorizontal({@required this.movieId});
+  CastHorizontal({required this.movieId});
 
   @override
   Widget build(BuildContext context) {
@@ -27,14 +27,17 @@ class CastHorizontal extends StatelessWidget {
 
         final List<Widget> listActorsCards = snapshot.data
             .map<Widget>(
-                (actor) => CustomCard(actor.getActorPhoto(), actor.name, () {}))
+                (actor) => Padding(
+                  padding: const EdgeInsets.only(left: 15),
+                  child: CustomCard(actor.getActorPhoto(), actor.name, () {}, tagHeroId: actor.uniqueId,),
+                ))
             .toList();
 
-        return PageView(
+        return ListView(
           children: listActorsCards,
-          pageSnapping: true,
+          scrollDirection: Axis.horizontal,
           controller: PageController(
-            initialPage: 1,
+            initialPage: 0,
             viewportFraction: 0.3,
           ),
         );

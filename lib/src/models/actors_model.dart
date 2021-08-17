@@ -1,29 +1,28 @@
 class Cast {
   List<Actor> actors = [];
   Cast.fromJsonList(List<dynamic> jsonList) {
-    if (jsonList == null) return;
     jsonList.forEach((jsonActor) {
-      final actor  = Actor.fromJsonMap(jsonActor); 
+      final actor = Actor.fromJsonMap(jsonActor);
       actors.add(actor);
     });
   }
 }
 
 class Actor {
-  bool adult;
-  int gender;
-  int id;
-  String knownForDepartment;
-  String name;
-  String originalName;
-  double popularity;
-  String profilePath;
-  int castId;
-  String character;
-  String creditId;
-  int order;
-  String department;
-  String job;
+  bool? adult;
+  int? gender;
+  int? id;
+  String? knownForDepartment;
+  String? name;
+  String? originalName;
+  double? popularity;
+  String? profilePath;
+  int? castId;
+  String? character;
+  String? creditId;
+  int? order;
+  String? department;
+  String? job;
 
   Actor({
     this.adult,
@@ -42,6 +41,10 @@ class Actor {
     this.job,
   });
 
+  get uniqueId {
+    return '$id-sapo';
+  }
+
   Actor.fromJsonMap(Map<String, dynamic> json) {
     adult = json['adult'];
     gender = json['gender'];
@@ -53,7 +56,7 @@ class Actor {
     profilePath = json['profile_path'];
     castId = json['cast_id'];
     character = json['character'];
-    creditId = json['credit_id']; 
+    creditId = json['credit_id'];
     order = json['order'];
     department = json['department'];
     job = json['job'];

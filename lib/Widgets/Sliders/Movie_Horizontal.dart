@@ -7,10 +7,10 @@ class MovieHorizontal extends StatelessWidget {
   final List<Movie> movies;
   final Function nextMovies;
 
-  MovieHorizontal({@required this.movies, @required this.nextMovies});
+  MovieHorizontal({required this.movies, required this.nextMovies});
 
   final PageController _pageController = PageController(
-    initialPage: 1,
+    initialPage: 0,
     viewportFraction: 0.3,
   );
 
@@ -27,18 +27,20 @@ class MovieHorizontal extends StatelessWidget {
 
     return Container(
         height: _screenSize.height * 0.25,
-        child: PageView.builder(
-            pageSnapping: false,
+        child: ListView.builder(
+            scrollDirection: Axis.horizontal,
             controller: _pageController,
             itemCount: movies.length,
             itemBuilder: (context, index) {
-              movies[index].uniqueId = '${movies[index].id}-card';
-              return CustomCard(
-                  movies[index].getPosterImage(),
-                  movies[index].title,
-                  () => Navigator.pushNamed(context, 'details',
-                      arguments: movies[index]),
-                  tagHeroId: movies[index].uniqueId);
+              return Padding(
+                padding: const EdgeInsets.only(left: 15),
+                child: CustomCard(
+                    movies[index].getPosterImage(),
+                    movies[index].title!,
+                    () => Navigator.pushNamed(context, 'details',
+                        arguments: movies[index]),
+                    tagHeroId: movies[index].uniqueId!),
+              );
             }));
   }
 }

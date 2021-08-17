@@ -11,7 +11,7 @@ class MoviesProvider {
   MoviesProvider();
 
   int _popularPages = 0;
-  List<Movie> _popularMovie = new List();
+  List<Movie> _popularMovie = [];
   bool _loading = false;
 
   final _popularStreamController = StreamController<List<Movie>>.broadcast();
@@ -20,7 +20,7 @@ class MoviesProvider {
 
   Stream<List<Movie>> get popularStream => _popularStreamController.stream;
 
-  void disposeStreams() => _popularStreamController?.close();
+  void disposeStreams() => _popularStreamController.close();
 
   String _apiKey = "8db94477a346b9592d356c3c6e77a05e";
   String _url = "api.themoviedb.org";

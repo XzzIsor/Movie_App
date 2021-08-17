@@ -43,13 +43,12 @@ class DataSearch extends SearchDelegate {
         future: movieProvider.searchMovie(query),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            List<Movie> movies = snapshot.data;
+            List<Movie> movies = snapshot.data as List<Movie>;
             return ListView(
                 children: movies.map((movie) {
-              movie.uniqueId = "";
               return ListTile(
-                  title: Text(movie.title),
-                  subtitle: Text(movie.originalTitle),
+                  title: Text(movie.title!),
+                  subtitle: Text(movie.originalTitle!),
                   leading: FadeInImage(
                       image: NetworkImage(movie.getPosterImage()),
                       placeholder: AssetImage('assets/img/no-image.jpg'),

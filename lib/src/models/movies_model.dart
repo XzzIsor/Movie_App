@@ -7,26 +7,24 @@ class Movies {
       final movie = new Movie.fromJsonMap(item);
       movies.add(movie);
     }
-  } 
+  }
 }
 
 class Movie {
-
-  String uniqueId;
-  bool adult;
-  String backdropPath;
-  List<int> genreIds;
-  int id;
-  String originalLanguage;
-  String originalTitle;
-  String overview;
-  double popularity;
-  String posterPath;
-  String releaseDate;
-  String title;
-  bool video;
-  double voteAverage;
-  int voteCount;
+  bool? adult;
+  String? backdropPath;
+  List<int>? genreIds;
+  int? id;
+  String? originalLanguage;
+  String? originalTitle;
+  String? overview;
+  double? popularity;
+  String? posterPath;
+  String? releaseDate;
+  String? title;
+  bool? video;
+  double? voteAverage;
+  int? voteCount;
 
   Movie({
     this.adult,
@@ -62,17 +60,23 @@ class Movie {
     voteCount = json['vote_count'];
   }
 
+  get uniqueId {
+    return '$id-tarjta';
+  }
+
+  get uniqueIdBanner {
+    return '$id-Banner';
+  }
+
   String getPosterImage() {
     return posterPath == null
         ? "https://st.depositphotos.com/1730367/3477/i/600/depositphotos_34771537-stock-photo-dead-rat.jpg"
-        : 
-        'https://image.tmdb.org/t/p/w500/$posterPath';
+        : 'https://image.tmdb.org/t/p/w500/$posterPath';
   }
 
   String getBackGroundImage() {
     return posterPath == null
         ? "https://st.depositphotos.com/1730367/3477/i/600/depositphotos_34771537-stock-photo-dead-rat.jpg"
-        : 
-        'https://image.tmdb.org/t/p/w500/$backdropPath';
-  }  
+        : 'https://image.tmdb.org/t/p/w500/$backdropPath';
+  }
 }

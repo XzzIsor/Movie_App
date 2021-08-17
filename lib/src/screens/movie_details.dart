@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:animate_do/animate_do.dart';
+
 import 'package:movie_app/Widgets/Sliders/Cast_horizontal.dart';
 import 'package:movie_app/src/models/movies_model.dart';
 
 class MovieDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final Movie _movie = ModalRoute.of(context).settings.arguments;
+    final Movie _movie = ModalRoute.of(context)!.settings.arguments as Movie; 
     return Scaffold(
         body: CustomScrollView(
         slivers: [
@@ -32,7 +34,7 @@ class MovieDetails extends StatelessWidget {
       child: Row(
         children: [
           Hero(
-            tag: movie.uniqueId,
+            tag: movie.uniqueIdBanner!,
             child: ClipRRect(
               borderRadius: BorderRadius.circular(20.0),
               child: Image(
@@ -47,13 +49,16 @@ class MovieDetails extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(movie.title, overflow: TextOverflow.ellipsis, style: Theme.of(context).textTheme.headline6),
-                Text(movie.originalTitle, overflow: TextOverflow.ellipsis, style: Theme.of(context).textTheme.subtitle1),
-                Row(
-                  children:[
-                    Icon(Icons.star),
-                    Text(movie.voteAverage.toString())
-                  ]
+                FadeIn(child: Text(movie.title!, overflow: TextOverflow.ellipsis, style: Theme.of(context).textTheme.headline6), delay: Duration(milliseconds: 300),),
+                FadeIn(child: Text(movie.originalTitle!, overflow: TextOverflow.ellipsis, style: Theme.of(context).textTheme.subtitle1), delay: Duration(milliseconds: 300),),
+                FadeIn(
+                  child: Row(
+                    children:[
+                      Icon(Icons.star),
+                      Text(movie.voteAverage.toString())
+                    ]
+                  ),
+                  delay: Duration(milliseconds: 300),
                 )
               ]
             )
@@ -66,7 +71,7 @@ class MovieDetails extends StatelessWidget {
   Widget _description(Movie movie ){
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
-      child: Text(movie.overview, textAlign: TextAlign.justify),
+      child: FadeIn(child: Text(movie.overview!, textAlign: TextAlign.justify), delay: Duration(milliseconds: 300),),
     );
   }
 
@@ -80,7 +85,7 @@ class MovieDetails extends StatelessWidget {
       floating: false,
       pinned: true,
       flexibleSpace:FlexibleSpaceBar(
-        title:Text(movie.title), 
+        title:FadeIn(child: Text(movie.title!, textAlign: TextAlign.center,), delay: Duration(milliseconds: 300),), 
         titlePadding: EdgeInsetsDirectional.only(start: 16,  end: 16, bottom: 16),
         background: FadeInImage(
           fit: BoxFit.cover,

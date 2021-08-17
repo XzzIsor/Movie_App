@@ -33,9 +33,11 @@ class HomePage extends StatelessWidget {
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                SizedBox(height: 60),
+                SizedBox(height: 80),
                 _createSwiper(),
+                SizedBox(height: 100,),
                 _popularMovies(context),
+                SizedBox(height: 100,),
               ],
             ),
           )),
