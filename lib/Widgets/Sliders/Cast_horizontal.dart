@@ -6,7 +6,7 @@ import 'package:movie_app/src/providers/movies_provider.dart';
 class CastHorizontal extends StatelessWidget {
   final actors = new MoviesProvider();
 
-  final List<Actor> cast = new List();
+  final List<Actor> cast = [];
   final String movieId;
   CastHorizontal({@required this.movieId});
 
