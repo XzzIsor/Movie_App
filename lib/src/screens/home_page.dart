@@ -28,13 +28,16 @@ class HomePage extends StatelessWidget {
       ),
       body: Container(
           color: Colors.deepPurple,
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              _createSwiper(),
-              _popularMovies(context),
-            ],
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                SizedBox(height: 60),
+                _createSwiper(),
+                _popularMovies(context),
+              ],
+            ),
           )),
     );
   }

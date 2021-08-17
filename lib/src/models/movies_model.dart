@@ -1,5 +1,5 @@
 class Movies {
-  List<Movie> movies = new List();
+  List<Movie> movies = [];
 
   Movies.fromJsonList(List<dynamic> jsonList) {
     if (jsonList == null) return;

@@ -43,7 +43,6 @@ class MoviesProvider {
 
     if (_loading) return [];
     _loading = true;
-    print("tu puta madre");
     final url = Uri.https(_url, '3/movie/popular', {
       'api_key': _apiKey,
       'language': _language,

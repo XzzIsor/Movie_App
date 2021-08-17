@@ -1,5 +1,5 @@
 class Cast {
-  List<Actor> actors = new List();
+  List<Actor> actors = [];
   Cast.fromJsonList(List<dynamic> jsonList) {
     if (jsonList == null) return;
     jsonList.forEach((jsonActor) {
